@@ -1,0 +1,162 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>uy.com.geocom.prueba</groupId>
+	<artifactId>recipe-book</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0.2-SNAPSHOT</version>
+
+	<!-- Completar con el nombre del proyecto -->
+	<name>web-portal-backend</name>
+
+	<!-- Nombre de la organizacion -->
+	<organization>
+		<name>Geocom</name>
+		<url>http://www.geocom.com.uy</url>
+	</organization>
+
+	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.7.RELEASE</version>
+    </parent>
+
+	<!-- Completar con las dependencias del proyecto -->
+	<dependencies>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter</artifactId>
+<!-- 			<version>1.5.6.RELEASE</version> -->
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+<!-- 			<version>1.5.6.RELEASE</version> -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+<!-- 			<version>1.5.6.RELEASE</version> -->
+<!--             <scope>provided</scope> -->
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-logging</artifactId>
+<!-- 			<version>1.5.6.RELEASE</version> -->
+    	</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+		    <version>3.1.12</version>
+		</dependency>	
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-jaxrs</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.sun.jersey</groupId>
+		    <artifactId>jersey-client</artifactId>
+		    <version>1.19.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+<!-- 		    <version>2.8.1</version> -->
+		</dependency>
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+<!--             <version>1.5.6.RELEASE</version> -->
+        </dependency>
+		
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+<!-- 		    <version>6.0.4</version> -->
+<!-- 		    <version>5.1.39</version> -->
+		</dependency>
+		<dependency>
+		    <groupId>org.javassist</groupId>
+		    <artifactId>javassist</artifactId>
+<!-- 		    <version>3.22.0-CR2</version> -->
+		</dependency>
+	</dependencies>
+	
+	<build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.6.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<finalName>${pom.artifactId}-${pom.version}</finalName>
+					<descriptors>
+						<descriptor>/src/main/assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<target>1.8</target>
+					<source>1.8</source>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+        </plugins>
+	</build>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>geogit.geocom.com.uy.nexus.all</id>
+			<name>Apache Maven 2 Group</name>
+			<url>http://geogit.geocom.com.uy:8081/nexus/content/groups/ALL/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<snapshotRepository>
+       		<id>nexus.geogit</id>
+    		<name>geogit.geocom.com.uy.nexus.snapshots</name>
+    		<url>http://geogit.geocom.com.uy:8081/nexus/content/repositories/geogit.geocom.com.uy.nexus.snapshots/</url>
+  		</snapshotRepository>
+		<repository>
+    		<id>nexus.geogit</id>
+			<name>geogit.geocom.com.uy.nexus.releases</name>
+			<url>http://geogit.geocom.com.uy:8081/nexus/content/repositories/geogit.geocom.com.uy.nexus.releases/</url>
+		</repository>
+	</distributionManagement>
+
+	<!-- Repositorios de artefactos de Nexus de GEOGIT de GEOCOM Uruguay S.A. -->
+	<repositories>
+		<repository>
+			<id>geogit.geocom.com.uy.nexus.all</id>
+			<name>Apache Maven 2 Group</name>
+			<url>http://geogit.geocom.com.uy:8081/nexus/content/groups/ALL/</url>
+		</repository>
+		<repository>
+            <id>spring-releases</id>
+            <name>Spring Releases</name>
+            <url>https://repo.spring.io/libs-release</url>
+        </repository>
+        <repository>
+            <id>org.jboss.repository.releases</id>
+            <name>JBoss Maven Release Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+        </repository>
+	</repositories>
+
+</project>

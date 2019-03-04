@@ -28,7 +28,7 @@ ejecutar los comando
 --mvn clean
 --mvn install
 ```
-Estos comandos generaran los recursos necesarios para el despliegue de la aplicación
+Estos comandos generaran los recursos necesarios para el despliegue de la aplicación.
 
 ```
 Ejecutar los comandos
